@@ -1,0 +1,17 @@
+{
+  "name": "litebank-api",
+  "version": "1.0.0",
+  "description": "Api for the litebank application",
+  "main": "index.js",
+  "repository": "https://gitlab.com/damigreen/litebank-api",
+  "author": "Damilola Faseun",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
