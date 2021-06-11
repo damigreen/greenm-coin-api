@@ -29,11 +29,11 @@ const User = mongoose.model('User', userSchema);
 
 
 try {
-  const user = new User({
-    name: 'Damilola Faseun',
-    email: 'fashfired@gmail.com',
-    number: '09017755801',
-  });
+  // const user = new User({
+  //   name: 'Damilola Faseun',
+  //   email: 'fashfired@gmail.com',
+  //   number: '09017755801',
+  // });
 
 
   // user.save().then((result) => {
@@ -41,31 +41,33 @@ try {
   //   mongoose.connection.close()
   // });
 
-  const users = [
-    {
-      name: 'Johny King',
-      email: 'johnyking@gmail.com',
-      number: '09010939801',
-    },
-    {
-      name: 'Yemi Flash',
-      email: 'yemiflash@gmail.com',
-      number: '09010939038',
-    },
-    {
-      name: 'Bruce Banners',
-      email: 'brucebanners@gmail.com',
-      number: '09013889801',
-    },
-  ]
+  // const users = [
+  //   {
+  //     name: 'Johny King',
+  //     email: 'johnyking@gmail.com',
+  //     number: '09010939801',
+  //   },
+  //   {
+  //     name: 'Yemi Flash',
+  //     email: 'yemiflash@gmail.com',
+  //     number: '09010939038',
+  //   },
+  //   {
+  //     name: 'Bruce Banners',
+  //     email: 'brucebanners@gmail.com',
+  //     number: '09013889801',
+  //   },
+  // ]
 
-  User.insertMany(users, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(result);
-    }
-  });
+  // User.insertMany(users, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
+
+  
 } catch (e) {
   console.log(e);
 }

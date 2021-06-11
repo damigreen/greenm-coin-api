@@ -4,6 +4,7 @@ Content-Type: application/json
 {
   "name":"Damilola Faseun",
   "email":"fashfired@gmail.com",
+  "password": "password",
   "number":"09017755801",
   "balance": 2000
 }
