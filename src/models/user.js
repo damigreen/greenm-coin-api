@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String },
   number: { type: Number, require: true, unique: true },
 });
-uniqueValidator.plugin(userSchema);
+userSchema.plugin(uniqueValidator);
+
 
 userSchema.set('toJSON', {
   transform: (document, returnedObject) => {
@@ -17,4 +18,3 @@ userSchema.set('toJSON', {
 });
 
 module.exports = mongoose.model('User', userSchema);
-
