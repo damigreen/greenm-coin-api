@@ -46,8 +46,8 @@ usersRouter.post('/', async (req, res) => {
 });
 
 usersRouter.put('/:id', async (req, res) => {
-  id = req.params.id;
-  body = req.body;
+  const id = req.params.id;
+  const body = req.body;
 
   try {
     const update = {
@@ -63,7 +63,13 @@ usersRouter.put('/:id', async (req, res) => {
     console.log(e)
     await res.sendStatus(404).end();
   }
-})
+});
+
+usersRouter.delete('/:id', async (req, res) => {
+  const id = req.params.id;
+  await User.findByIdAndDelete(id);
+  res.sendStatus(204).end();
+});
 
 
 module.exports = usersRouter;
