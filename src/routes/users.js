@@ -1,5 +1,5 @@
 const usersRouter = require('express').Router();
-const { find, findById } = require('../models/user');
+const { find, findById, findByIdAndUpdate } = require('../models/user');
 const User = require('../models/user');
 
 
@@ -21,7 +21,7 @@ usersRouter.get('/:id', async (req, res) => {
     await res.send(user.toJSON());
   } catch (e) {
     console.log(e);
-    res.send(404)
+    res.sendStatus(404).end();
   }
 });
 
@@ -44,6 +44,26 @@ usersRouter.post('/', async (req, res) => {
     res.send(e);
   }
 });
+
+usersRouter.put('/:id', async (req, res) => {
+  id = req.params.id;
+  body = req.body;
+
+  try {
+    const update = {
+      name: body.name,
+      email: body.email,
+      number: body.number,
+    }
+  
+    const updatedUser = await User.findByIdAndUpdate(id, update, { new: true });
+    await res.json(updatedUser.toJSON());
+
+  } catch (e) {
+    console.log(e)
+    await res.sendStatus(404).end();
+  }
+})
 
 
 module.exports = usersRouter;

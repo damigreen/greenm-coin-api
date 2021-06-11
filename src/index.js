@@ -2,7 +2,7 @@ const app = require('./app');
 const mongoose = require('mongoose');
 const config = require('./utils/config')
 const mongoUrl = config.MONGO_URI;
-mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true })
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
   .then(() => console.log('Connected to mongoDB'))
   .catch(err => console.log(err));
 

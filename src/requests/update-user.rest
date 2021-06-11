@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/users
+PUT http://localhost:3001/api/users/60c36920b3884528799adad
 Content-Type: application/json
 
 {
   "name": "Peter Parker",
   "email": "peterparker@gmail.com",
-  "number": "08062542633"
+  "number": "09052542733"
 }
