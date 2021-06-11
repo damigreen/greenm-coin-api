@@ -32,6 +32,7 @@ usersRouter.post('/', async (req, res) => {
     name: body.name,
     email: body.email,
     number: body.number,
+    balance: 5000,
   });
 
 
@@ -54,6 +55,7 @@ usersRouter.put('/:id', async (req, res) => {
       name: body.name,
       email: body.email,
       number: body.number,
+      balance: body.balance,
     }
   
     const updatedUser = await User.findByIdAndUpdate(id, update, { new: true });

@@ -1,8 +1,9 @@
-PUT http://localhost:3001/api/users/60c36920b3884528799adad
+PUT http://localhost:3001/api/users/60c3565ff237f811025d1c58
 Content-Type: application/json
 
 {
-  "name": "Peter Parker",
-  "email": "peterparker@gmail.com",
-  "number": "09052542733"
+  "name":"Damilola Faseun",
+  "email":"fashfired@gmail.com",
+  "number":"09017755801",
+  "balance": 2000
 }
