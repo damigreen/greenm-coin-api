@@ -5,7 +5,13 @@ const userSchema = new mongoose.Schema({
   name: { type: String },
   email: { type: String },
   number: { type: String, require: true, unique: true },
-  balance: { type: Number }
+  balance: { type: Number },
+  transactions: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Transaction'
+    }
+  ]
 });
 userSchema.plugin(uniqueValidator);
 
