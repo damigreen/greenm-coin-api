@@ -1,3 +1,4 @@
+const transactionRouter = require('express').Router();
 const creditRouter = require('express').Router();
 const debitRouter = require('express').Router();
 const jwt = require('jsonwebtoken');
@@ -120,8 +121,19 @@ debitRouter.post('/', async(req, res) => {
   }
 });
 
+transactionRouter.get('/', async (req, res) => {
+  try {
+    const transactions = await Transaction.find({});
+    await res.json(transactions.map(transaction => transaction.toJSON()));
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 
 module.exports = {
   creditRouter,
   debitRouter,
+  transactionRouter,
 }
+
