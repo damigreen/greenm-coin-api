@@ -23,6 +23,7 @@ app.use('/api/transactions/credit', creditRouter);
 app.use('/api/transactions/debit', debitRouter);
 app.use('/api/transactions', transactionRouter);
 
+app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 
 module.exports = app;

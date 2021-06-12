@@ -19,7 +19,12 @@ const errorHandler = (error, request, response, next) => {
   next(error);
 }
 
+const unknownEndpoint = (request, response, next) => {
+  response.statsu(404).send({ error: 'unknown endpoint'});
+} 
+
 module.exports = {
   requestLogger,
   errorHandler,
+  unknownEndpoint,
 }
