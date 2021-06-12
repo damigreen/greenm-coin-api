@@ -10,22 +10,28 @@ loginRouter.post('/', async (req, res, next) => {
     const body = req.body;
   
     const user = await User.findOne({ email: body.email });
-    console.log(user.passwordHash);
-    console.log(body.password);
 
-    passwordCorrect = user === null ? false : await bcrypt.compare(user.passwordHash, body.password);
-  
+    const passwordCorrect = user === null ? false : await bcrypt.compare(body.password, user.passwordHash);
+    
+    
     if (!(user && passwordCorrect)) {
-      return res.sendStatus(401).json({ error: 'invalid email or password'});
+      console.log("Wrong password-------------------------------");
+      
+      return await res.status(401).json({error: 'invalid email and password'});
     }
-  
+    
+    console.log("Proceed Password right-------------------------------");
     const userForToken = {
       email: user.email,
       id: user._id,
     };
   
-    const token = jwt.sign(userForToken, config.SECRET);
-    await res.sendStatus(200).send(token, { name: user.name, email: user.email });
+    const token = await jwt.sign(userForToken, config.SECRET);
+    
+    await res
+      .status(200)
+      .send({ name: user.name, email: user.email, token });
+
   } catch (e) {
     console.log(e);
     next(e);
