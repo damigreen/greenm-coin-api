@@ -39,7 +39,7 @@ usersRouter.post('/', async (req, res) => {
       email: body.email,
       number: body.number,
       balance: 5000,
-      passwordHash: passwordHash,
+      passwordHash,
     });
 
     const newUser = await user.save();
