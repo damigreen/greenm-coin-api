@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/transactions
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhc2hmaXJlZEBnbWFpbC5jb20iLCJpZCI6IjYwYzQ3NWE2ZTE5YzZkMjEyMTY3ZmU1MiIsImlhdCI6MTYyMzQ5NzQ5NX0.D2sopnqN213xcoCl5ysoEIWAzHwuDKMVBcUFPD5otwU
+
+{
+  "amount": 50000
+}
