@@ -2,8 +2,8 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "name": "Peter dolphin",
-  "email": "peterdolphins@gmail.com",
-  "number": "0806254233233",
-  "password": "password"
+"name":"John Fango",
+"email":"johnfango@gmail.com",
+"number":"09010933038",
+"password": "password"
 }
