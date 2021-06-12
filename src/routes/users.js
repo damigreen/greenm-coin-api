@@ -4,7 +4,7 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 
 
-usersRouter.get('/', async (req, res) => {
+usersRouter.get('/', async (req, res, next) => {
   try {
     // Get transactions
     const users = await User.find({}).populate('transactions', { transactionType: 1, amount: 1});
@@ -12,22 +12,22 @@ usersRouter.get('/', async (req, res) => {
     
   } catch (e) {
     console.log(e)
-    await res.send(e);
+    next(e);
   }
 });
 
-usersRouter.get('/:id', async (req, res) => {
+usersRouter.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
     const user = await User.findById(id);
     await res.send(user.toJSON());
   } catch (e) {
     console.log(e);
-    res.sendStatus(404).end();
+    next(e);
   }
 });
 
-usersRouter.post('/', async (req, res) => {
+usersRouter.post('/', async (req, res, next) => {
   const body = req.body;
   const saltRounds = 10;
   
@@ -48,11 +48,11 @@ usersRouter.post('/', async (req, res) => {
 
   } catch (e) {
     console.log(e);
-    await res.send(e);
+    next(e);
   }
 });
 
-usersRouter.put('/:id', async (req, res) => {
+usersRouter.put('/:id', async (req, res, next) => {
   const id = req.params.id;
   const body = req.body;
 
@@ -73,14 +73,18 @@ usersRouter.put('/:id', async (req, res) => {
 
   } catch (e) {
     console.log(e)
-    await res.sendStatus(404).end();
+    next(e);
   }
 });
 
-usersRouter.delete('/:id', async (req, res) => {
-  const id = req.params.id;
-  await User.findByIdAndDelete(id);
-  res.sendStatus(204).end();
+usersRouter.delete('/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await User.findByIdAndDelete(id);
+    res.sendStatus(204).end();
+  } catch (e) {
+    next(e);
+  }
 });
 
 

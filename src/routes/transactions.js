@@ -18,7 +18,7 @@ const getTokenFrom = (request) => {
   return null;
 }
 
-creditRouter.post('/', async (req, res) => {
+creditRouter.post('/', async (req, res, next) => {
   const body = req.body;
   const amount = body.amount;
   if (!amount) {
@@ -62,11 +62,12 @@ creditRouter.post('/', async (req, res) => {
 
   } catch (err) {
     console.log(err)
+    next(err)
   }
 
 });
 
-debitRouter.post('/', async(req, res) => {
+debitRouter.post('/', async(req, res, next) => {
   const body = req.body;
   const amount = body.amount;
   const accountToCredit = body.transactionAccount;
@@ -117,27 +118,30 @@ debitRouter.post('/', async(req, res) => {
     await res.json(savedTransaction.toJSON());
 
   } catch (err) {
-    console.log(err)
+    console.log(err);
+    next(err);
   }
 });
 
 // Get all transactions
-transactionRouter.get('/', async (req, res) => {
+transactionRouter.get('/', async (req, res, next) => {
   try {
     const transactions = await Transaction.find({});
     await res.json(transactions.map(transaction => transaction.toJSON()));
   } catch (err) {
     console.log(err);
+    next(err);
   }
 });
 
 
-transactionRouter.get('/:id', async (req, res) => {
+transactionRouter.get('/:id', async (req, res, next) => {
   try {
     const transaction = await Transaction.findById(req.params.id);
     await res.send(transaction.toJSON());
   } catch (err) {
     console.log(e);
+    next(err);
   }
 })
 
