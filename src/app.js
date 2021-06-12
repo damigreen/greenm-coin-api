@@ -4,8 +4,8 @@ const bodyParser = require('body-parser');
 const usersRouter = require('./routes/users');
 const loginRouter = require('./routes/login');
 const {
-  fundRouter,
-  sendRouter,
+  creditRouter,
+  debitRouter,
 } = require('./routes/transactions');
 // const fundRouter = require('./routes/transactions');
 
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Defined Routes
 app.use('/api/users', usersRouter);
 app.use('/api/login', loginRouter);
-app.use('/api/transactions', fundRouter);
-app.use('/api/transactions', sendRouter);
+app.use('/api/transactions/credit', creditRouter);
+app.use('/api/transactions/debit', debitRouter);
 
 module.exports = app;
