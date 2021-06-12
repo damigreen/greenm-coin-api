@@ -121,6 +121,7 @@ debitRouter.post('/', async(req, res) => {
   }
 });
 
+// Get all transactions
 transactionRouter.get('/', async (req, res) => {
   try {
     const transactions = await Transaction.find({});
@@ -131,9 +132,17 @@ transactionRouter.get('/', async (req, res) => {
 });
 
 
+transactionRouter.get('/:id', async (req, res) => {
+  try {
+    const transaction = await Transaction.findById(req.params.id);
+    await res.send(transaction.toJSON());
+  } catch (err) {
+    console.log(e);
+  }
+})
+
 module.exports = {
   creditRouter,
   debitRouter,
   transactionRouter,
 }
-
