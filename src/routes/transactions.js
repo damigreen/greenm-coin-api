@@ -93,7 +93,7 @@ debitRouter.post('/', async(req, res, next) => {
     // New debit transaction
     const newDebitTransaction = new Transaction({
       transactionType: "Account Debit",
-      transactionAccount: accountToCredit,
+      transactionAccount: body.transactionAccount,
       date: new Date(),
       amount: amount,
       user: user._id
@@ -112,11 +112,11 @@ debitRouter.post('/', async(req, res, next) => {
 
     // Save transaction to database
     const savedTransaction = await newDebitTransaction.save();
+    console.log(newDebitTransaction);
     // Update transaction in users
     user.transactions = user.transactions.concat(savedTransaction._id);
     await user.save();
     await res.json(savedTransaction.toJSON());
-
   } catch (err) {
     console.log(err);
     next(err);
