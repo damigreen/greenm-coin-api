@@ -9,6 +9,7 @@
   - [Features](#features)
   - [Technologies](#technologies)
   - [Installation](#installation)
+  - [Demo](#demo)
 
 ## Personal Details
 
@@ -20,7 +21,14 @@
   
 ## Description
 
-A banking application that allows you easily send and receive funds at the tap of your fingers.
+A banking application that allows you easily send and receive funds at the tap of your fingers. You can register on the app by providing your email and and a secure passsword. Provide your phone number for your account and register on the portal.
+
+These project is implemented useing react js for the front-end and express js on the backend. It also make use of mongoDB atlas for database management were a list of the app users and transactions is stored
+
+User authentication is required to send and receive funds as it requires you to sign up to perform transactions on the dashboard. Likwise, it provides a clean interface for performing transactions.
+
+Users can also check their transacion history on the application interface and sign off whenever they are through with their transactions. It has a full responsive layout optimised for mobile, tablet and desktop view.
+
 These project was developed by Damilola Faseun for the Veegil full stack developer internship test.
 
 ## Features
@@ -45,3 +53,6 @@ git clone https://gitlab.com/damigreen/litbank-ap1.git
 cd litebank-app && yarn
 yarn dev
 ```
+## Demo
+
+[LiteBank Demo](https://drive.google.com/file/d/1r4gJ54dyMpBT1PmobEcNHz8Axe_mqPW3/view?usp=sharing)
