@@ -4,6 +4,7 @@ const config = require('../utils/config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+const SECRET = config.SECRET || SECRET_KEY;
 
 loginRouter.post('/', async (req, res, next) => {
   try {
@@ -26,7 +27,7 @@ loginRouter.post('/', async (req, res, next) => {
       id: user._id,
     };
   
-    const token = await jwt.sign(userForToken, config.SECRET);
+    const token = await jwt.sign(userForToken, SECRET);
     
     await res
       .status(200)
