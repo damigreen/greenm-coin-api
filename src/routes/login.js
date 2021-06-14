@@ -5,8 +5,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const SECRET = config.SECRET;
-// const SECRET = config.SECRET || SECRET_KEY;
-console.log(process.env);
 
 loginRouter.post('/', async (req, res, next) => {
   try {

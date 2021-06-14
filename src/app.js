@@ -18,6 +18,7 @@ app.use(express.static('build'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(middleware.requestLogger);
+app.use(middleware.redirectHome);
 
 // Defined Routes
 app.use('/api/users', usersRouter);
