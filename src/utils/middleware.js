@@ -6,8 +6,9 @@ const requestLogger = (request, response, next) => {
   next();
 };
 
-const redirectHome = ('/login', async (req, res) => {
+const redirectHome = ('/login', async (req, res, next) => {
   res.redirect('/');
+  next();
 })
 
 const errorHandler = (error, request, response, next) => {

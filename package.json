@@ -7,7 +7,12 @@
   "author": "Damilola Faseun",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build:ui": "rm -rf build && cd ../litebank-app/ && yarn run build && cp -r build ../litebank-api/",
+    "deploy": "git push heroku main",
+    "deploy:full": "yarn run build:ui && git add . && git commit -m uibuild && git run deploy",
+    "logs:prod": "heroku logs -t",
+    "CD": "cd ../litebank-app/"
   },
   "license": "MIT",
   "dependencies": {
